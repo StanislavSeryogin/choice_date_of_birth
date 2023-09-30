@@ -1,56 +1,86 @@
 import 'package:choice_date_of_birth/utilities/constants.dart';
+import 'package:choice_date_of_birth/utilities/layout_helper.dart';
 import 'package:choice_date_of_birth/widgets/choice_container.dart';
 import 'package:flutter/material.dart';
 
 class Choice extends StatelessWidget {
-  const Choice({super.key});
+  const Choice({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // position widgets dynamically for different screen size;
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    final layoutHelper = LayoutHelper(
+      screenWidth: MediaQuery.of(context).size.width,
+      screenHeight: MediaQuery.of(context).size.height,
+    );
 
     return Scaffold(
       body: Stack(
         children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: AppImage.kTopLeft,
+          buildTopLeftImage(),
+          buildBottomRightImage(),
+          buildCenterImageStack(
+            layoutHelper.getCenterTopPosition(),
+            layoutHelper.getCenterLeftPosition(),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: AppImage.kBottomRight,
+          buildChoiceContainer(
+            layoutHelper.getContainerTopPosition(0.3),
+            layoutHelper.getDynamicLeft(),
+            mainText: 'Track my period',
+            subText: 'contraception and wellbeing',
           ),
-          Positioned(
-            // position widgets dynamically for different screen size;
-            top: screenHeight * 0.6, // or top: 624
-            left: screenWidth * 0.2, // or left: 67
-
-            child: SizedBox(
-              width: 138,
-              height: 136,
-              child: Stack(
-                children: <Widget>[
-                  AppImage.kCenterBig,
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: AppImage.kCenterSmall,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          ChoiceContainer(
-            screenTop: (screenHeight / 2) - 50, // or screenTop: 253
-            screenLeft: (screenWidth / 2) - 25, // or screenLeft: 34
-          ),
-          ChoiceContainer(
-            screenTop: (screenHeight / 2) + 25, // or screenTop: 457
-            screenLeft: (screenWidth / 2) - 25, // or screenLeft: 34
+          buildChoiceContainer(
+            layoutHelper.getContainerTopPosition(0.3) + 204,
+            layoutHelper.getDynamicLeft(),
+            mainText: 'Get pregnant',
+            subText: 'learn about reproductive health',
           ),
         ],
       ),
+    );
+  }
+
+  Align buildTopLeftImage() {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: AppImage.kTopLeft,
+    );
+  }
+
+  Align buildBottomRightImage() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: AppImage.kBottomRight,
+    );
+  }
+
+  Positioned buildCenterImageStack(double top, double left) {
+    return Positioned(
+      top: top,
+      left: left,
+      child: SizedBox(
+        width: 138,
+        height: 136,
+        child: Stack(
+          children: [
+            AppImage.kCenterBig,
+            Align(
+              alignment: Alignment.topRight,
+              child: AppImage.kCenterSmall,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  ChoiceContainer buildChoiceContainer(double top, double left,
+      {required String mainText, required String subText}) {
+    return ChoiceContainer(
+      screenTop: top,
+      screenLeft: left,
+      mainText: mainText,
+      subText: subText,
+      onTap: () {},
     );
   }
 }
