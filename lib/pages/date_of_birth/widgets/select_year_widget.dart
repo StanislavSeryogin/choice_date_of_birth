@@ -1,15 +1,15 @@
+import 'package:choice_date_of_birth/cubit/data_cubit/data_cubit.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectYearWidget extends StatelessWidget {
-  const SelectYearWidget({
-    super.key,
-    required this.years,
-  });
-
-  final List<int> years;
+  const SelectYearWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<int> years = List.generate(101, (index) => 1950 + index);
+    final dataCubit = BlocProvider.of<DataCubit>(context);
+
     return Align(
       alignment: Alignment.center,
       child: Column(
@@ -29,7 +29,7 @@ class SelectYearWidget extends StatelessWidget {
               itemExtent: 60,
               onSelectedItemChanged: (index) {
                 int selectedYear = years[index];
-                print("Selected Year: $selectedYear");
+                dataCubit.selectDate(selectedYear);
               },
               children: List.generate(years.length, (index) {
                 return Center(

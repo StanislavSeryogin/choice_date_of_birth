@@ -1,12 +1,11 @@
 import 'package:choice_date_of_birth/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../cubit/navigation_cubit/navigation_cubit.dart';
 
 class SelectButtonWidget extends StatelessWidget {
-  const SelectButtonWidget({
-    super.key, required this.onTap,
-  });
-
-  final VoidCallback onTap;
+  const SelectButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class SelectButtonWidget extends StatelessWidget {
               Color(0xFF454581),
               Color(0xFF7978A3),
               //this information in figma: background: linear-gradient(180deg, #454581 0%, #FCFCFF 253.66%);
-              //maybe 253.66% this is a typo? 
+              //maybe 253.66% this is a typo?
             ],
             stops: [
               0.0,
@@ -37,7 +36,9 @@ class SelectButtonWidget extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(30.0),
-            onTap: onTap,
+            onTap: () {
+              context.read<NavigationCubit>().navigateToSummaryOfSelectionScreen();
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -32,10 +32,3 @@ flutter:
     - assets/image_choice/
     - assets/image_date_of_birth/
 
-  # fonts:
-  #   - family: Nunito
-  #     fonts:
-  #       - asset: fonts/Nunito-Italic-VariableFont_wght.ttf
-  #       - asset: fonts/Nunito-VariableFont_wght.ttf
-  #         style: italic
-
