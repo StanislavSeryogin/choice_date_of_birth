@@ -2,23 +2,23 @@ class LayoutHelper {
   final double screenWidth;
   final double screenHeight;
 
-  static const double containerWidth = 346.0;
+  static const double containerWidthChoice = 346.0;
 
   LayoutHelper({required this.screenWidth, required this.screenHeight});
 
-  double getDynamicLeft() {
-    return (screenWidth - containerWidth) / 2;
+  double getDynamicLeftChoice() {
+    return (screenWidth - containerWidthChoice) / 2;
   }
 
-  double getCenterTopPosition() {
+  double getCenterTopPositionChoice() {
     return screenHeight * 0.75;
   }
 
-  double getCenterLeftPosition() {
+  double getCenterLeftPositionChoice() {
     return screenWidth * 0.2;
   }
 
-  double getContainerTopPosition(double offsetFactor) {
+  double getContainerTopPositionChoice(double offsetFactor) {
     return screenHeight * offsetFactor;
   }
 }

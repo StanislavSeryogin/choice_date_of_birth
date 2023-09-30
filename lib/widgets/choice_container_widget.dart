@@ -61,7 +61,7 @@ class ChoiceContainer extends StatelessWidget {
               SizedBox(
                 height: 28,
                 width: 30,
-                child: AppImage.kArrow,
+                child: AppImageChoice.kArrow,
               )
             ],
           ),

@@ -1,6 +1,6 @@
 import 'package:choice_date_of_birth/utilities/constants.dart';
 import 'package:choice_date_of_birth/utilities/layout_helper.dart';
-import 'package:choice_date_of_birth/widgets/choice_container.dart';
+import 'package:choice_date_of_birth/widgets/choice_container_widget.dart';
 import 'package:flutter/material.dart';
 
 class Choice extends StatelessWidget {
@@ -19,18 +19,18 @@ class Choice extends StatelessWidget {
           buildTopLeftImage(),
           buildBottomRightImage(),
           buildCenterImageStack(
-            layoutHelper.getCenterTopPosition(),
-            layoutHelper.getCenterLeftPosition(),
+            layoutHelper.getCenterTopPositionChoice(),
+            layoutHelper.getCenterLeftPositionChoice(),
           ),
           buildChoiceContainer(
-            layoutHelper.getContainerTopPosition(0.3),
-            layoutHelper.getDynamicLeft(),
+            layoutHelper.getContainerTopPositionChoice(0.3),
+            layoutHelper.getDynamicLeftChoice(),
             mainText: 'Track my period',
             subText: 'contraception and wellbeing',
           ),
           buildChoiceContainer(
-            layoutHelper.getContainerTopPosition(0.3) + 204,
-            layoutHelper.getDynamicLeft(),
+            layoutHelper.getContainerTopPositionChoice(0.3) + 204,
+            layoutHelper.getDynamicLeftChoice(),
             mainText: 'Get pregnant',
             subText: 'learn about reproductive health',
           ),
@@ -42,14 +42,14 @@ class Choice extends StatelessWidget {
   Align buildTopLeftImage() {
     return Align(
       alignment: Alignment.topLeft,
-      child: AppImage.kTopLeft,
+      child: AppImageChoice.kTopLeft,
     );
   }
 
   Align buildBottomRightImage() {
     return Align(
       alignment: Alignment.bottomRight,
-      child: AppImage.kBottomRight,
+      child: AppImageChoice.kBottomRight,
     );
   }
 
@@ -57,18 +57,16 @@ class Choice extends StatelessWidget {
     return Positioned(
       top: top,
       left: left,
-      child: SizedBox(
-        width: 138,
-        height: 136,
-        child: Stack(
-          children: [
-            AppImage.kCenterBig,
-            Align(
-              alignment: Alignment.topRight,
-              child: AppImage.kCenterSmall,
-            ),
-          ],
-        ),
+      width: 138,
+      height: 136,
+      child: Stack(
+        children: [
+          AppImageChoice.kCenterBig,
+          Align(
+            alignment: Alignment.topRight,
+            child: AppImageChoice.kCenterSmall,
+          ),
+        ],
       ),
     );
   }
