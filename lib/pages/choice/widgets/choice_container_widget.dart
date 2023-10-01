@@ -3,8 +3,8 @@ import 'package:choice_date_of_birth/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChoiceContainer extends StatelessWidget {
-  const ChoiceContainer({
+class ChoiceContainerWidget extends StatelessWidget {
+  const ChoiceContainerWidget({
     super.key,
     required this.screenTop,
     required this.screenLeft,

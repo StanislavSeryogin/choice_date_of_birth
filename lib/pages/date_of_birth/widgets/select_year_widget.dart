@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectYearWidget extends StatelessWidget {
-  const SelectYearWidget({super.key});
+  const SelectYearWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<int> years = List.generate(101, (index) => 1950 + index);
     final dataCubit = BlocProvider.of<DataCubit>(context);
+    final years = dataCubit.years;
 
     return Align(
       alignment: Alignment.center,

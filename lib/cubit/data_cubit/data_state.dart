@@ -17,3 +17,12 @@ class DateSelected extends DataState {
   @override
   List<Object?> get props => [year];
 }
+
+class DateError extends DataState {
+  final String message;
+
+  const DateError(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}

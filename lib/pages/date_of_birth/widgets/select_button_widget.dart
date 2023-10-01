@@ -37,21 +37,26 @@ class SelectButtonWidget extends StatelessWidget {
           child: InkWell(
             borderRadius: BorderRadius.circular(30.0),
             onTap: () {
-              context.read<NavigationCubit>().navigateToSummaryOfSelectionScreen();
+              context
+                  .read<NavigationCubit>()
+                  .navigateToSummaryOfSelectionScreen();
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(width: 68),
-                const Text(
-                  'Next',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 25.0,
-                    color: Color(0xFFffffff),
+                const SizedBox(width: 35),
+                const Expanded(
+                  child: Text(
+                    'Next',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 25.0,
+                      color: Color(0xFFffffff),
+                    ),
                   ),
                 ),
-                const SizedBox(width: 22),
+                //const SizedBox(width: 22),
                 AppImageDateOfBirth.kArrow,
                 const SizedBox(width: 17),
               ],

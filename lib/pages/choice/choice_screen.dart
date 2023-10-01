@@ -71,9 +71,9 @@ class ChoiceScreen extends StatelessWidget {
     );
   }
 
-  ChoiceContainer _buildChoiceContainer(double top, double left,
+  ChoiceContainerWidget _buildChoiceContainer(double top, double left,
       {required String mainText, required String subText}) {
-    return ChoiceContainer(
+    return ChoiceContainerWidget(
       screenTop: top,
       screenLeft: left,
       mainText: mainText,

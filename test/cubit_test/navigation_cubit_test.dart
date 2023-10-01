@@ -26,5 +26,34 @@ void main() {
       navigationCubit.navigateToSummaryOfSelectionScreen();
       expect(navigationCubit.state, SummaryOfSelectionScreenState());
     });
+
+    test('navigateBackToChoiceScreen updates the state to ChoiceScreenState',
+        () {
+      navigationCubit.navigateBackToChoiceScreen();
+      expect(navigationCubit.state, ChoiceScreenState());
+    });
+
+    test('goBack from DateOfBirthScreenState returns to ChoiceScreenState', () {
+      navigationCubit
+          .navigateToDateOfBirthScreen(); 
+      navigationCubit.goBack();
+      expect(navigationCubit.state, ChoiceScreenState());
+    });
+
+    test(
+        'goBack from SummaryOfSelectionScreenState returns to DateOfBirthScreenState',
+        () {
+      navigationCubit
+          .navigateToSummaryOfSelectionScreen(); 
+      navigationCubit.goBack();
+      expect(navigationCubit.state, DateOfBirthScreenState());
+    });
+
+    test('goBack from ChoiceScreenState does not change the state', () {
+      navigationCubit
+          .navigateBackToChoiceScreen(); 
+      navigationCubit.goBack();
+      expect(navigationCubit.state, ChoiceScreenState());
+    });
   });
 }
