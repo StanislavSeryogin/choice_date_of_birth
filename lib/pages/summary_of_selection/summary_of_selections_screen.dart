@@ -1,8 +1,10 @@
+import 'package:choice_date_of_birth/pages/summary_of_selection/widgets/selected_year_widget.dart';
 import 'package:choice_date_of_birth/widgets/back_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubit/export_cubit.dart';
+import 'widgets/no_years_selected_widget.dart';
 
 class SummaryOfSelectionScreen extends StatelessWidget {
   const SummaryOfSelectionScreen({Key? key}) : super(key: key);
@@ -15,27 +17,11 @@ class SummaryOfSelectionScreen extends StatelessWidget {
           return Stack(
             children: [
               if (state is DateSelected)
-                Center(
-                  child: Text(
-                    'Selected Year: ${state.year}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 35.0,
-                    ),
-                  ),
+                SelectedYearWidget(
+                  text: 'Selected Year: ${state.year}',
                 )
               else
-                const Center(
-                  child: Text(
-                    'No Year Selected',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 35.0,
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
-
+                const NoYearSelectedWidget(),
               const BackButtonWidget(),
             ],
           );
@@ -44,3 +30,5 @@ class SummaryOfSelectionScreen extends StatelessWidget {
     );
   }
 }
+
+
