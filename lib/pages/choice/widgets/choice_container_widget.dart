@@ -1,21 +1,21 @@
+import 'package:choice_date_of_birth/cubit/navigation_cubit/navigation_cubit.dart';
 import 'package:choice_date_of_birth/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChoiceContainer extends StatelessWidget {
-  const ChoiceContainer({
+class ChoiceContainerWidget extends StatelessWidget {
+  const ChoiceContainerWidget({
     super.key,
     required this.screenTop,
     required this.screenLeft,
     required this.mainText,
     required this.subText,
-    required this.onTap,
   });
 
   final double screenTop;
   final double screenLeft;
   final String mainText;
   final String subText;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,9 @@ class ChoiceContainer extends StatelessWidget {
       top: screenTop,
       left: screenLeft,
       child: GestureDetector(
-        onTap: onTap,
+        onTap: () {
+          context.read<NavigationCubit>().navigateToDateOfBirthScreen();
+        },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 31),
           width: 346,

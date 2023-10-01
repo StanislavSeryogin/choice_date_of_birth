@@ -1,10 +1,10 @@
 import 'package:choice_date_of_birth/utilities/constants.dart';
 import 'package:choice_date_of_birth/utilities/layout_helper.dart';
-import 'package:choice_date_of_birth/widgets/choice_container_widget.dart';
+import 'package:choice_date_of_birth/pages/choice/widgets/choice_container_widget.dart';
 import 'package:flutter/material.dart';
 
-class Choice extends StatelessWidget {
-  const Choice({Key? key}) : super(key: key);
+class ChoiceScreen extends StatelessWidget {
+  const ChoiceScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +16,19 @@ class Choice extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          buildTopLeftImage(),
-          buildBottomRightImage(),
-          buildCenterImageStack(
+          _buildTopLeftImage(),
+          _buildBottomRightImage(),
+          _buildCenterImageStack(
             layoutHelper.getCenterTopPositionChoice(),
             layoutHelper.getCenterLeftPositionChoice(),
           ),
-          buildChoiceContainer(
+          _buildChoiceContainer(
             layoutHelper.getContainerTopPositionChoice(0.3),
             layoutHelper.getDynamicLeftChoice(),
             mainText: 'Track my period',
             subText: 'contraception and wellbeing',
           ),
-          buildChoiceContainer(
+          _buildChoiceContainer(
             layoutHelper.getContainerTopPositionChoice(0.3) + 204,
             layoutHelper.getDynamicLeftChoice(),
             mainText: 'Get pregnant',
@@ -39,21 +39,21 @@ class Choice extends StatelessWidget {
     );
   }
 
-  Align buildTopLeftImage() {
+  Align _buildTopLeftImage() {
     return Align(
       alignment: Alignment.topLeft,
       child: AppImageChoice.kTopLeft,
     );
   }
 
-  Align buildBottomRightImage() {
+  Align _buildBottomRightImage() {
     return Align(
       alignment: Alignment.bottomRight,
       child: AppImageChoice.kBottomRight,
     );
   }
 
-  Positioned buildCenterImageStack(double top, double left) {
+  Positioned _buildCenterImageStack(double top, double left) {
     return Positioned(
       top: top,
       left: left,
@@ -71,14 +71,13 @@ class Choice extends StatelessWidget {
     );
   }
 
-  ChoiceContainer buildChoiceContainer(double top, double left,
+  ChoiceContainerWidget _buildChoiceContainer(double top, double left,
       {required String mainText, required String subText}) {
-    return ChoiceContainer(
+    return ChoiceContainerWidget(
       screenTop: top,
       screenLeft: left,
       mainText: mainText,
       subText: subText,
-      onTap: () {},
     );
   }
 }
